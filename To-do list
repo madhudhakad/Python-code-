@@ -1,0 +1,53 @@
+# Simple Todo List in Python
+
+# Function to display the todo list
+def display_todo_list(todo_list):
+    print("Todo List:")
+    if not todo_list:
+        print("No tasks.")
+    else:
+        for index, task in enumerate(todo_list, start=1):
+            print(f"{index}. {task}")
+
+# Function to add a task to the todo list
+def add_task(todo_list, task):
+    todo_list.append(task)
+    print(f"Task '{task}' added to the todo list.")
+
+# Function to remove a task from the todo list
+def remove_task(todo_list, index):
+    if 1 <= index <= len(todo_list):
+        removed_task = todo_list.pop(index - 1)
+        print(f"Task '{removed_task}' removed from the todo list.")
+    else:
+        print("Invalid index.")
+
+# Main function
+def main():
+    todo_list = []
+
+    while True:
+        print("\nOptions:")
+        print("1. Display Todo List")
+        print("2. Add Task")
+        print("3. Remove Task")
+        print("4. Quit")
+
+        choice = input("Enter your choice (1-4): ")
+
+        if choice == '1':
+            display_todo_list(todo_list)
+        elif choice == '2':
+            task = input("Enter the task: ")
+            add_task(todo_list, task)
+        elif choice == '3':
+            index = int(input("Enter the index of the task to remove: "))
+            remove_task(todo_list, index)
+        elif choice == '4':
+            print("Exiting the todo list application. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
+
+if __name__ == "__main__":
+    main()
